@@ -1,35 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 16:05:53 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/12 16:35:16 by osuchane         ###   ########.fr       */
+/*   Created: 2023/01/12 16:29:49 by osuchane          #+#    #+#             */
+/*   Updated: 2023/01/12 16:29:56 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char	**ft_split(char const *s, char c)
 {
-	size_t	i;
-	size_t	j;
 
-	if (*little == 0)
-		return ((char *)big);
-	if (len == 0)
-		return (NULL);
-	i = 0;
-	while (big[i] && i < len && len > 0)
-	{
-		j = 0;
-		while (little[j] && (little[j] == big[i + j] && i + j < len))
-			j++;
-		if (little[j] == 0)
-			return (&((char *)big)[i]);
-		i++;
-	}
-	return (NULL);
 }

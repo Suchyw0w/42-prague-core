@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/12 14:33:48 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/12 16:27:39 by osuchane         ###   ########.fr       */
+/*   Created: 2023/01/12 14:58:47 by osuchane          #+#    #+#             */
+/*   Updated: 2023/01/12 15:20:22 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <stdio.h>
 #include <stdlib.h>
 
-static unsigned int	ft_strlen(char const *str)
+static int	ft_strlen(char const *str)
 {
 	int	x;
 
@@ -25,31 +25,31 @@ static unsigned int	ft_strlen(char const *str)
 	return (x);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t			count;
-	char			*ptr;
+	size_t		i;
+	size_t		j;
+	char		*ptr;
 
-	if (s == NULL)
+	if (s1 == NULL || s2 == NULL)
 		return (NULL);
-	if (start > ft_strlen(s))
-	{
-		ptr = malloc(sizeof(char));
-		if (!ptr)
-			return (NULL);
-		ptr[0] = 0;
-		return (ptr);
-	}
-	ptr = malloc((len + 1) * sizeof(char));
+	i = ft_strlen(s1);
+	j = ft_strlen(s2);
+	ptr = malloc((i + j) + 1 * sizeof (char));
 	if (!ptr)
 		return (NULL);
-	count = 0;
-	while (s[start] && count < len)
+	i = 0;
+	j = 0;
+	while (s1[i])
 	{
-		ptr[count] = s[start];
-		count++;
-		start++;
+		ptr[i] = s1[i];
+		i++;
 	}
-	ptr[count] = '\0';
+	while (s2[j])
+	{
+		ptr[i + j] = s2[j];
+		j++;
+	}
+	ptr[i + j] = '\0';
 	return (ptr);
 }

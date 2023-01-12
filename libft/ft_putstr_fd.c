@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 16:05:53 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/12 16:35:16 by osuchane         ###   ########.fr       */
+/*   Created: 2023/01/12 16:46:02 by osuchane          #+#    #+#             */
+/*   Updated: 2023/01/12 16:48:30 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <unistd.h>
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+void	ft_putstr_fd(char *s, int fd)
 {
-	size_t	i;
-	size_t	j;
-
-	if (*little == 0)
-		return ((char *)big);
-	if (len == 0)
-		return (NULL);
-	i = 0;
-	while (big[i] && i < len && len > 0)
+	while (*s != '\0')
 	{
-		j = 0;
-		while (little[j] && (little[j] == big[i + j] && i + j < len))
-			j++;
-		if (little[j] == 0)
-			return (&((char *)big)[i]);
-		i++;
+		write(fd, s, 1);
+		s++;
 	}
-	return (NULL);
 }

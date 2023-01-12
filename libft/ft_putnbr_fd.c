@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 16:05:53 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/12 16:35:16 by osuchane         ###   ########.fr       */
+/*   Created: 2023/01/12 16:51:22 by osuchane          #+#    #+#             */
+/*   Updated: 2023/01/12 16:55:05 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <unistd.h>
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	i;
-	size_t	j;
+	unsigned int	x;
 
-	if (*little == 0)
-		return ((char *)big);
-	if (len == 0)
-		return (NULL);
-	i = 0;
-	while (big[i] && i < len && len > 0)
+	if (n < 0)
 	{
-		j = 0;
-		while (little[j] && (little[j] == big[i + j] && i + j < len))
-			j++;
-		if (little[j] == 0)
-			return (&((char *)big)[i]);
-		i++;
+		x = -n;
+		write(fd, "-", 1);
 	}
-	return (NULL);
+	else
+		x = n;
+	if (x > 10)
+	{
+		ft_putnbr_fd(x / 10, fd);
+		ft_putnbr_fd(x % 10, fd);
+	}
+	if (x < 10)
+	{
+		x += 48;
+		write(fd, &x, 1);
+	}
 }
