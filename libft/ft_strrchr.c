@@ -6,7 +6,7 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 15:43:45 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/12 11:48:34 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:23:49 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ char	*ft_strrchr(const char *s, int c)
 
 	i = 0;
 	last = NULL;
-	while (s[i] != '\0')
+	while (s[i])
 	{
-		if (s[i] == c)
-			last = (char *)s;
+		if (s[i] == (char)c)
+			last = &((char *)s)[i];
 		i++;
 	}
+	if (c == '\0')
+		last = &((char *)s)[i];
 	return (last);
 }
