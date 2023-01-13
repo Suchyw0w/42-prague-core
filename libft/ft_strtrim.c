@@ -6,7 +6,7 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:28:21 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/13 17:07:22 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/13 17:17:15 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_count(char const *s1, char const *set)
 	start = 0;
 	i = 0;
 	end = 0;
-	while (isset(s1[i], set))
+	while (ft_is_in_set(s1[i], set))
 	{
 		start++;
 		i++;
@@ -62,10 +62,10 @@ int	ft_count(char const *s1, char const *set)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int i;
-	int j;
-	int k;
-	char *ptr;
+	int		i;
+	int		j;
+	int		k;
+	char	*ptr;
 
 	if (s1 == NULL || set == NULL)
 		return (NULL);
@@ -77,7 +77,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (NULL);
 	j = 0;
 	k = 0;
-	while (isset(s1[j], set))
+	while (ft_is_in_set(s1[j], set))
 		j++;
 	while (k < i)
 	{
