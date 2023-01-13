@@ -6,13 +6,14 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:31:02 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/12 16:37:17 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/13 09:58:59 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
+#include <stdlib.h>
 
-void	ft_itoa_fill(long int n, char *nb, int index)
+static void	ft_fill(long int n, char *nb, int index)
 {
 	long int	x;
 
@@ -25,8 +26,8 @@ void	ft_itoa_fill(long int n, char *nb, int index)
 		x = n;
 	if (x >= 10)
 	{
-		ft_itoa_fill(x / 10, nb, index - 1);
-		ft_itoa_fill(x % 10, nb, index);
+		ft_fill(x / 10, nb, index - 1);
+		ft_fill(x % 10, nb, index);
 	}
 	if (x < 10)
 	{
@@ -37,10 +38,9 @@ void	ft_itoa_fill(long int n, char *nb, int index)
 
 char	*ft_itoa(int n)
 {
-	char		*ret;
+	char		*ans;
 	long int	x;
 	int			i;
-	int			size;
 
 	x = n;
 	i = 0;
@@ -49,18 +49,17 @@ char	*ft_itoa(int n)
 		x /= 10;
 		i++;
 	}
-	size = i;
 	if (n < 0)
 	{
-		size++;
+		i++;
 		x *= -n;
 	}
 	if (n == 0)
-		size = 1;
-	ret = malloc((size + 1) * sizeof(char));
-	if (!ret)
+		i = 1;
+	ans = malloc((i + 1) * sizeof(char));
+	if (!ans)
 		return (NULL);
-	ret[size] = '\0';
-	ft_itoa_fill(n, ret, size - 1);
-	return (ret);
+	ans[i] = '\0';
+	ft_fill(n, ans, i - 1);
+	return (ans);
 }
