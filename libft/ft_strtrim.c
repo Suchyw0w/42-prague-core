@@ -6,7 +6,7 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:28:21 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/13 15:43:59 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/13 17:07:22 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,59 +14,76 @@
 #include <stdlib.h>
 #include <string.h>
 
-int	ft_ischar(char c, char const *set)
+char	*ft_emptystr(void)
 {
-	int	i;
+	char	*ptr;
+
+	ptr = malloc(1 * sizeof(char));
+	if (!ptr)
+		return (NULL);
+	ptr[0] = '\0';
+	return (ptr);
+}
+
+int	ft_is_in_set(char c, char const *set)
+{
+	unsigned int	i;
 
 	i = 0;
 	while (set[i])
 	{
-		if (set[i++] == c)
+		if (c == set[i])
 			return (1);
+		i++;
 	}
 	return (0);
 }
 
-char	*ft_trim(char const *s1, char const *set, int *j, int i)
+int	ft_count(char const *s1, char const *set)
 {
-	int		k;
-	int		len;
-	char	*ptr;
+	int	start;
+	int	i;
+	int	end;
 
-	len = ft_strlen((char *)s1);
-	k = 0;
-	while (ft_ischar(s1[len - k - 1], set))
-		00k++;
-	ptr = ft_calloc(sizeof(char), len - (k + i) + 1);
-	if (!ptr)
-		return (NULL);
-	while (*j < len - (k + i))
+	start = 0;
+	i = 0;
+	end = 0;
+	while (isset(s1[i], set))
 	{
-		*(ptr + *j) = *(s1 + i + *j);
-		*j += 1;
+		start++;
+		i++;
 	}
-	return (ptr);
+	while (s1[i])
+		i++;
+	while (ft_is_in_set(s1[i - end - 1], set) && (i - end - 1) > 0)
+		end++;
+	return (i - (start + end));
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		i;
-	int		j;
-	int		len;
-	char	*ptr;
+	int i;
+	int j;
+	int k;
+	char *ptr;
 
-	if (!s1)
+	if (s1 == NULL || set == NULL)
 		return (NULL);
-	i = 0;
+	i = ft_count(s1, set);
+	if (i < 1)
+		return (ft_emptystr());
+	ptr = malloc((i + 1) * sizeof(char));
+	if (!ptr)
+		return (NULL);
 	j = 0;
-	len = ft_strlen((char *)s1);
-	while (ft_ischar(s1[i], set))
-		i++;
-	if (i == len)
-		ptr = malloc(1);
-	else
-		ptr = ft_trim(s1, set, &j, i);
-	if (ptr)
-		ptr[i + j] = '\0';
+	k = 0;
+	while (isset(s1[j], set))
+		j++;
+	while (k < i)
+	{
+		ptr[k] = s1[j + k];
+		k++;
+	}
+	ptr[k] = '\0';
 	return (ptr);
 }
