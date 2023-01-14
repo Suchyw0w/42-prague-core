@@ -1,43 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/12 14:33:48 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/14 14:33:59 by osuchane         ###   ########.fr       */
+/*   Created: 2023/01/14 15:02:14 by osuchane          #+#    #+#             */
+/*   Updated: 2023/01/14 15:54:27 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	size_t			count;
-	char			*ptr;
+	t_list	*new_lst;
+	t_list	*start;
 
-	if (!s)
+	if (!lst || !f || !del)
 		return (NULL);
-	if (start > ft_strlen(s))
+	start = 0;
+	while (lst)
 	{
-		ptr = malloc(sizeof(char));
-		if (!ptr)
+		new_lst = ft_lstnew((*f)(lst->content));
+		if (!new_lst)
+		{
+			ft_lstclear(&start, del);
 			return (NULL);
-		ptr[0] = 0;
-		return (ptr);
+		}
+		else
+			ft_lstadd_back(&start, new_lst);
+		lst = lst->next;
 	}
-	ptr = malloc((len + 1) * sizeof(char));
-	if (!ptr)
-		return (NULL);
-	count = 0;
-	while (count < len)
-	{
-		ptr[count] = s[start + count];
-		count++;
-	}
-	ptr[count] = '\0';
-	return (ptr);
+	return (start);
 }
