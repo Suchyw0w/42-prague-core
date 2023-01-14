@@ -6,18 +6,18 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:53:40 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/12 09:48:53 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/14 08:30:21 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
-{
-	int	x;
+#include <string.h>
 
-	x = 0;
-	while (str[x] != '\0')
-	{
-		x++;
-	}
-	return (x);
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

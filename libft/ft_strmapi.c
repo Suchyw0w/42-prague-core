@@ -6,7 +6,7 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:39:15 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/12 16:54:35 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/14 08:32:12 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	int		i;
 	char	*ans;
 
-	if (s == NULL || f == NULL)
+	if (!s || !f)
 		return (NULL);
 	i = 0;
 	while (s[i])

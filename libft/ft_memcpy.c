@@ -6,7 +6,7 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:44:28 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/12 11:09:10 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/14 07:43:26 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	i = 0;
 	psrc = src;
 	pdest = dest;
-	while (n--)
+	while (i < n)
 	{
 		pdest[i] = psrc[i];
 		i++;

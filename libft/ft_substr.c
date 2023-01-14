@@ -6,31 +6,20 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:33:48 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/12 16:27:39 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/14 08:42:29 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <stdlib.h>
-
-static unsigned int	ft_strlen(char const *str)
-{
-	int	x;
-
-	x = 0;
-	while (str[x] != '\0')
-	{
-		x++;
-	}
-	return (x);
-}
+#include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t			count;
 	char			*ptr;
 
-	if (s == NULL)
+	if (!s)
 		return (NULL);
 	if (start > ft_strlen(s))
 	{
@@ -44,11 +33,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!ptr)
 		return (NULL);
 	count = 0;
-	while (s[start] && count < len)
+	while (count < len)
 	{
-		ptr[count] = s[start];
+		ptr[count] = s[start + count];
 		count++;
-		start++;
 	}
 	ptr[count] = '\0';
 	return (ptr);

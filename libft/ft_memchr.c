@@ -6,7 +6,7 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 15:49:14 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/12 11:31:24 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/14 07:41:27 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,10 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		if (*str == p)
+		if (str[i] == p)
 		{
-			return (str);
+			return (str + i);
 		}
-		str++;
 		i++;
 	}
 	return (NULL);

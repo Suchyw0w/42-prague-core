@@ -6,7 +6,7 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:28:21 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/13 17:17:15 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/14 08:42:30 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		k;
 	char	*ptr;
 
-	if (s1 == NULL || set == NULL)
+	if (!s1 || !set)
 		return (NULL);
 	i = ft_count(s1, set);
 	if (i < 1)

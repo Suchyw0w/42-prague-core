@@ -6,7 +6,7 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:48:59 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/12 16:55:26 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/14 07:50:19 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_putendl_fd(char *s, int fd)
 {
 	int	i;
 
-	if (s == NULL)
+	if (!s)
 		return ;
 	i = 0;
 	while (s[i])
