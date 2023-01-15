@@ -6,12 +6,11 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:31:02 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/13 09:58:59 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:04:35 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdlib.h>
+#include "libft.h"
 
 static void	ft_fill(long int n, char *nb, int index)
 {

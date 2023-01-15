@@ -6,11 +6,11 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 15:44:03 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/12 13:58:07 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:10:35 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

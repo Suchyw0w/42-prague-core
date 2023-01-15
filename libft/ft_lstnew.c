@@ -6,12 +6,11 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 10:32:30 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/14 10:36:53 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:07:53 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 t_list	*ft_lstnew(void *content)
 {

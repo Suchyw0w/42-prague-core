@@ -6,11 +6,10 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 10:01:20 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/14 08:14:03 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:10:08 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 char	*ft_strdup(char *src)

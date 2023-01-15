@@ -6,11 +6,11 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:29:25 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/12 09:48:51 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:08:56 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
 void	*ft_memset(void *s, int c, size_t n)
 {

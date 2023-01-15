@@ -6,12 +6,10 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:29:49 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/13 11:33:10 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:09:57 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdlib.h>
 #include "libft.h"
 
 static void	ft_fill(char **mem, char const *s, char c)

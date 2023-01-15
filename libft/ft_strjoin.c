@@ -6,12 +6,10 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:58:47 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/14 08:17:35 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:10:16 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)

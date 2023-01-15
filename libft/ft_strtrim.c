@@ -6,13 +6,11 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:28:21 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/14 08:42:30 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:10:49 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
-#include <string.h>
 
 char	*ft_emptystr(void)
 {

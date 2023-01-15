@@ -6,7 +6,7 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:58:20 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/14 15:56:50 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:09:35 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define LIBFT_H
 
 # include <string.h>
+# include <stdlib.h>
+# include <limits.h>
+# include <unistd.h>
 
 typedef struct s_list
 {
@@ -30,8 +33,8 @@ int				ft_isdigit(int c);
 int				ft_isprint(int c);
 void			*ft_memchr(const void *s, int c, size_t n);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
-void			*ft_memcpy(void *dest, const void *src, size_t n);
-void			*ft_memmove(void *dest, const void *src, size_t n);
+void			*ft_memcpy(void *dst, const void *src, size_t n);
+void			*ft_memmove(void *dst, const void *src, size_t len);
 void			*ft_memset(void *s, int c, size_t n);
 char			*ft_strchr(const char *s, int c);
 size_t			ft_strlcat(char *dst, const char *src, size_t size);

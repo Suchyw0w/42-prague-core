@@ -6,26 +6,30 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 15:43:45 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/12 14:23:49 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:10:42 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int		i;
-	char	*last;
+	const char	*p;
+	char		*last;
+	int			i;
 
-	i = 0;
+	if (s == NULL)
+		return (NULL);
+	p = s;
 	last = NULL;
-	while (s[i])
+	i = 0;
+	while (p[i])
 	{
-		if (s[i] == (char)c)
-			last = &((char *)s)[i];
+		if (p[i] == (char)c)
+			last = (char *)&p[i];
 		i++;
 	}
-	if (c == '\0')
-		last = &((char *)s)[i];
+	if ((char)c == p[i])
+		last = (char *)&p[i];
 	return (last);
 }

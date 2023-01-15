@@ -6,17 +6,22 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:33:53 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/14 07:37:41 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:02:47 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {
 	char	*str;
+	size_t	i;
 
+	i = 0;
 	str = (char *)s;
-	while (n--)
-		*str++ = 0;
+	while (i < n)
+	{
+		str[i] = 0;
+		i++;
+	}
 }

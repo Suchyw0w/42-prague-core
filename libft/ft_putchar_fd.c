@@ -6,11 +6,11 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:42:44 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/12 16:42:53 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:09:01 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
 void	ft_putchar_fd(char c, int fd)
 {

@@ -6,25 +6,25 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:44:28 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/14 07:43:26 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/15 16:08:44 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	size_t				i;
-	const unsigned char	*psrc;
-	unsigned char		*pdest;
+	void	*d;
+	size_t	i;
 
+	if (!dst && !src)
+		return (NULL);
+	d = dst;
 	i = 0;
-	psrc = src;
-	pdest = dest;
-	while (i < n)
+	while (n > i)
 	{
-		pdest[i] = psrc[i];
+		((char *)dst)[i] = ((char *)src)[i];
 		i++;
 	}
-	return (dest);
+	return (d);
 }
