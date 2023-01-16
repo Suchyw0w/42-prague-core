@@ -6,7 +6,7 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:44:28 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/15 16:24:29 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/16 09:01:57 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	void	*d;
 	size_t	i;
 
-	if (!dst || !src)
+	if (!dst && !src)
 		return (NULL);
 	d = dst;
 	i = 0;
