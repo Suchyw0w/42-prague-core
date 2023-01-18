@@ -6,11 +6,12 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:31:02 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/15 16:04:35 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:57:14 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static void	ft_fill(long int n, char *nb, int index)
 {
@@ -49,10 +50,7 @@ char	*ft_itoa(int n)
 		i++;
 	}
 	if (n < 0)
-	{
 		i++;
-		x *= -n;
-	}
 	if (n == 0)
 		i = 1;
 	ans = malloc((i + 1) * sizeof(char));

@@ -6,7 +6,7 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 15:43:45 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/15 16:10:42 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:48:54 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strrchr(const char *s, int c)
 	char		*last;
 	int			i;
 
-	if (s == NULL)
+	if (!s)
 		return (NULL);
 	p = s;
 	last = NULL;

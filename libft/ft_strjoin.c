@@ -6,7 +6,7 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:58:47 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/15 16:10:16 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:40:07 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t		j;
 	char		*ptr;
 
-	if (s1 == NULL || s2 == NULL)
+	if (!s1 || !s2)
 		return (NULL);
 	i = ft_strlen((char *)s1);
 	j = ft_strlen((char *)s2);
