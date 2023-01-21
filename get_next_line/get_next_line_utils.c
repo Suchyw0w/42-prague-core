@@ -6,7 +6,7 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 23:46:33 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/21 12:58:28 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/21 16:12:07 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ size_t	ft_strlen(char *str)
 	return (i);
 }
 
+// need to allocate 1 char for \0 if s1 empty (its empty every call)
 char	*ft_strjoin(char *s1, char *s2)
 {
 	size_t		i;
@@ -53,21 +54,19 @@ char	*ft_strjoin(char *s1, char *s2)
 		s1 = (char *)malloc(1 * sizeof(char));
 		s1[0] = '\0';
 	}
-	if (!s1 || !s2)
+	if (!s2)
 		return (NULL);
-	ptr = malloc((ft_strlen(s1) + ft_strlen(s2)) + 1 * sizeof (char));
+	ptr = (char *)malloc((ft_strlen(s1) + ft_strlen(s2)) + 1 * sizeof (char));
 	if (!ptr)
 		return (NULL);
-	i = 0;
+	i = -1;
 	j = 0;
 	while (s1[++i])
 		ptr[i] = s1[i];
 	while (s2[j])
-	{
-		ptr[i + j] = s2[j];
-		j++;
-	}
-	ptr[i + j] = '\0';
+		ptr[i++] = s2[j++];
+	ptr[ft_strlen(s1) + ft_strlen(s2)] = '\0';
+	free(s1);
 	return (ptr);
 }
 
@@ -82,7 +81,7 @@ char	*ft_get_single_line(char *str)
 		return (NULL);
 	while (str[i] && str[i] != '\n')
 		i++;
-	ptr = malloc((i + 2) * sizeof(char));
+	ptr = (char *)malloc((i + 2) * sizeof(char));
 	if (!ptr)
 		return (NULL);
 	i = 0;

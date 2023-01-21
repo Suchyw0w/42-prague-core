@@ -6,7 +6,7 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 23:46:16 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/21 12:51:47 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/21 16:11:33 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_allocate(char *str)
 		free(str);
 		return (NULL);
 	}
-	ptr = malloc((ft_strlen(str) + 1 - i) * sizeof(char));
+	ptr = (char *)malloc((ft_strlen(str) + 1 - i) * sizeof(char));
 	if (!ptr)
 		return (NULL);
 	i++;
@@ -43,7 +43,7 @@ char	*ft_read(int fd, char *str)
 	char	*buffer;
 	int		number_of_bytes;
 
-	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (NULL);
 	number_of_bytes = 1;
