@@ -6,7 +6,7 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 23:46:33 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/21 09:22:56 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/21 12:55:46 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,26 @@ size_t	ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	size_t		i;
 	size_t		j;
 	char		*ptr;
 
+	if (!s1)
+	{
+		s1 = (char *)malloc(1 * sizeof(char));
+		s1[0] = '\0';
+	}
 	if (!s1 || !s2)
 		return (NULL);
-	i = ft_strlen((char *)s1);
-	j = ft_strlen((char *)s2);
-	ptr = malloc((i + j) + 1 * sizeof (char));
+	ptr = malloc((ft_strlen(s1) + ft_strlen(s2)) + 1 * sizeof (char));
 	if (!ptr)
 		return (NULL);
 	i = 0;
 	j = 0;
-	while (s1[i])
-	{
+	while (s1[++i])
 		ptr[i] = s1[i];
-		i++;
-	}
 	while (s2[j])
 	{
 		ptr[i + j] = s2[j];
@@ -71,6 +71,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (ptr);
 }
 
+// i + 2 = \n \0
 char	*ft_get_single_line(char *str)
 {
 	int		i;
@@ -90,7 +91,11 @@ char	*ft_get_single_line(char *str)
 		ptr[i] = str[i];
 		i++;
 	}
+	if (str[i] == '\n')
+	{
+		ptr[i] = str[i];
+		i++;
+	}
 	ptr[i] = '\0';
 	return (ptr);
 }
-

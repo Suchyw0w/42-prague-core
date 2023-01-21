@@ -6,7 +6,7 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 23:46:31 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/21 09:23:45 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/01/21 12:48:53 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 char	*get_next_line(int fd);
 char	*ft_get_single_line(char *str);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char *s1, char *s2);
 size_t	ft_strlen(char *str);
 char	*ft_strchr(const char *s, int c);
 
