@@ -1,0 +1,6 @@
+hello
+people
+just testing
+multiple file descriptors at once
+hehe
+lets see

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 23:46:16 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/23 13:08:25 by osuchane         ###   ########.fr       */
+/*   Created: 2023/01/23 11:31:34 by osuchane          #+#    #+#             */
+/*   Updated: 2023/01/23 13:55:54 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_allocate(char *str)
 {
@@ -64,15 +64,15 @@ char	*ft_read(int fd, char *str)
 
 char	*get_next_line(int fd)
 {
-	static char	*str;
+	static char	*str[2048];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	str = ft_read(fd, str);
-	if (!str)
+	str[fd] = ft_read(fd, str[fd]);
+	if (!str[fd])
 		return (NULL);
-	line = ft_get_single_line(str);
-	str = ft_allocate(str);
+	line = ft_get_single_line(str[fd]);
+	str[fd] = ft_allocate(str[fd]);
 	return (line);
 }
