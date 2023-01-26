@@ -1,3 +1,4 @@
 /libft-unit-test
-/.vscode
-/libft/.vscode
+*.vscode
+/*/.vscode
+/*/*/.vscode
