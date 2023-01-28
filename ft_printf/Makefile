@@ -11,7 +11,7 @@ LIBFT = ./libft/libft.a
 	cc ${CFLAGS} -c $< -o ${<:.c=.o} -I ${INC}
 
 ${NAME}: ${OBJ}
-	make bonus -C ./libft
+	make -C ./libft
 	cp ./libft/libft.a ${NAME}
 	${LIBC} ${NAME} ${OBJ}
 
