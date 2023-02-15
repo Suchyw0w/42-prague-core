@@ -6,57 +6,96 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:31:02 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/18 13:57:14 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/02/01 16:03:39 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-static void	ft_fill(long int n, char *nb, int index)
+static int	get_malloc(int n)
 {
-	long int	x;
+	int	i;
 
+	i = 0;
 	if (n < 0)
+		n = n * -1;
+	if (n == -2147483648)
 	{
-		x = -n;
-		nb[0] = '-';
+		n = n + 1;
+		n = n * -1;
+	}
+	while (n / 10 > 0)
+	{
+		i++;
+		n = n / 10;
+	}
+	return (i);
+}
+
+static char	*handle_negative(char *out, int *n, int *i, int *var)
+{
+	if (*n == 0)
+	{
+		out[*i] = '0';
+		return (out);
+	}
+	else if (*n >= -2147483647)
+	{
+		out[*i] = '-';
+		*n = *n * -1;
 	}
 	else
-		x = n;
-	if (x >= 10)
 	{
-		ft_fill(x / 10, nb, index - 1);
-		ft_fill(x % 10, nb, index);
+		out[*i] = '-';
+		*n = *n + 1;
+		*n = *n * -1;
+		*var = 1;
 	}
-	if (x < 10)
+	return (out);
+}
+
+static char	*more_itoa(int n, int *var, int i, char *out)
+{
+	while (var[1] > 0)
 	{
-		x += 48;
-		nb[index] = x;
+		if ((n / var[1]) > 0 || var[0])
+		{
+			var[0] = 1;
+			out[i++] = (n / var[1]) + '0';
+			n = n - ((n / var[1]) * var[1]);
+		}
+		if (var[2])
+		{
+			var[2] = 0;
+			n = n + 1;
+		}
+		var[1] = var[1] / 10;
 	}
+	out[i] = '\0';
+	return (out);
 }
 
 char	*ft_itoa(int n)
 {
-	char		*ans;
-	long int	x;
-	int			i;
+	int		var[3];
+	int		i;
+	char	*out;
 
-	x = n;
 	i = 0;
-	while (x != 0)
+	var[0] = 0;
+	var[2] = 0;
+	if (n < 0)
+		out = malloc(get_malloc(n) + 3);
+	else
+		out = malloc(get_malloc(n) + 2);
+	if (!out)
+		return (0);
+	if (n <= 0)
 	{
-		x /= 10;
+		out = handle_negative(out, &n, &i, &var[2]);
 		i++;
 	}
-	if (n < 0)
-		i++;
-	if (n == 0)
-		i = 1;
-	ans = malloc((i + 1) * sizeof(char));
-	if (!ans)
-		return (NULL);
-	ans[i] = '\0';
-	ft_fill(n, ans, i - 1);
-	return (ans);
+	var[1] = 1000000000;
+	return (more_itoa(n, var, i, out));
 }
