@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/26 09:49:26 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/26 11:24:04 by osuchane         ###   ########.fr       */
+/*   Created: 2023/01/29 17:22:04 by osuchane          #+#    #+#             */
+/*   Updated: 2023/02/01 11:55:01 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_case_s(va_list *args)
 	return (str_len);
 }
 
-int	ft_case_percent()
+int	ft_case_percent(void)
 {
 	ft_putchar_fd('%', 1);
 	return (1);

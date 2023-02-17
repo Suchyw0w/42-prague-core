@@ -5,100 +5,110 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/28 22:03:20 by osuchane          #+#    #+#             */
-/*   Updated: 2023/01/28 22:15:06 by osuchane         ###   ########.fr       */
+/*   Created: 2023/01/28 22:03:35 by osuchane          #+#    #+#             */
+/*   Updated: 2023/02/02 10:38:18 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-static void	ft_fill(unsigned int n, char *nb, unsigned int index)
+static t_format	ft_innit_struct(void)
 {
-	unsigned int	x;
+	t_format	innit;
 
-	if (n < 0)
-	{
-		x = -n;
-		nb[0] = '-';
-	}
-	else
-		x = n;
-	if (x >= 10)
-	{
-		ft_fill(x / 10, nb, index - 1);
-		ft_fill(x % 10, nb, index);
-	}
-	if (x < 10)
-	{
-		x += 48;
-		nb[index] = x;
-	}
+	innit.precision = 0;
+	innit.space = 0;
+	innit.specifier = 0;
+	innit.dot = 0;
+	innit.sharp = 0;
+	innit.neg_prec = 0;
+	innit.plus = 0;
+	innit.minus = 0;
+	innit.width = 0;
+	innit.zero = 0;
+	return (innit);
 }
 
-char	*ft_unsigned_itoa(unsigned int n)
+static t_format	ft_parse_flags(char *str, t_format f)
 {
-	char		*ans;
-	unsigned int	x;
-	unsigned int	i;
-
-	x = n;
-	i = 0;
-	while (x != 0)
+	while (*str != '.' && !ft_strchr(DEFAULTS, *str))
 	{
-		x /= 10;
-		i++;
+		if (*str == '+')
+			f.plus = 1;
+		if (*str == ' ')
+			f.space = 1;
+		if (*str == '#')
+			f.sharp = 1;
+		str++;
 	}
-	if (n < 0)
-		i++;
-	if (n == 0)
-		i = 1;
-	ans = malloc((i + 1) * sizeof(char));
-	if (!ans)
-		return (NULL);
-	ans[i] = '\0';
-	ft_fill(n, ans, i - 1);
-	return (ans);
+	return (f);
 }
 
-static void	ft_puthex(unsigned int n, const char format)
+static t_format	ft_get_width(char *str, va_list args, t_format f)
 {
-	if (n < 16)
+	int	found;
+
+	found = 0;
+	while (*str != '.' && !ft_strchr(DEFAULTS, *str))
 	{
-		if (n > 9)
+		if (*str == '-')
+			f.minus = 1;
+		if (*str == '0' && !ft_isdigit(*(str - 1)))
+			f.zero = 1;
+		else if (((*str > '0' && *str <= '9') || *str == '*') && !found)
 		{
-			if (format == 'x')
-				ft_putchar_fd(n - 10 + 'a', 1);
-			if (format == 'X')
-				ft_putchar_fd(n - 10 + 'A', 1);
+			if (*str == '*')
+				f.width = va_arg(args, int);
+			else
+				f.width = ft_atoi(str);
+			found = 1;
 		}
-		else
-			ft_putchar_fd(n + '0', 1);
+		str++;
 	}
-	else
-	{
-		ft_puthex(n / 16, format);
-		ft_puthex(n % 16, format);
-	}
+	return (f);
 }
 
-static int	ft_hexlen(unsigned int n)
+static t_format	ft_parse_precisions(char *str, va_list args, t_format f)
 {
-	int	i;
+	int	found;
 
-	i = 0;
-	while (n != 0)
+	found = 0;
+	while (!ft_strchr(DEFAULTS, *str))
 	{
-		i++;
-		n /= 16;
+		if ((ft_isdigit(*str) || *str == '*') && !found)
+		{
+			if (*str == '*')
+				f.precision = va_arg(args, int);
+			else
+				f.precision = ft_atoi(str);
+			found = 1;
+		}
+		str++;
 	}
-	return (i);
+	return (f);
 }
 
-int	ft_printhex(unsigned int n, const char format)
+int	ft_get_flags(char *str, va_list args)
 {
-	if (n == 0)
-		return (write(1, "0", 1));
-	else
-		ft_puthex(n, format);
-	return (ft_hexlen(n));
+	t_format	flags;
+
+	flags = ft_get_width(str, args, ft_innit_struct());
+	flags = ft_parse_flags(str, flags);
+	while (!ft_strchr(DEFAULTS, *str) && *str != '.')
+		str++;
+	if (*str == '.' && !flags.specifier)
+	{
+		flags.dot = 1;
+		flags = ft_parse_precisions(str++, args, flags);
+		while (!ft_strchr(DEFAULTS, *str))
+			str++;
+	}
+	if (flags.width < 0)
+	{
+		flags.minus = 1;
+		flags.width *= -1;
+	}
+	flags.specifier = *str;
+	flags.neg_prec = flags.precision < 0;
+	return (ft_choose_flag(flags, args));
 }
