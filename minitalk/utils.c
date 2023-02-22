@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 12:53:40 by osuchane          #+#    #+#             */
-/*   Updated: 2023/02/05 10:39:54 by osuchane         ###   ########.fr       */
+/*   Created: 2023/02/04 03:18:26 by osuchane          #+#    #+#             */
+/*   Updated: 2023/02/04 03:38:35 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minitalk.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_putchar(char c)
 {
-	size_t	i;
+	write(1, &c, 1);
+}
+
+void	ft_putstr(char *str)
+{
+	int	i;
 
 	i = 0;
-	if (str == NULL)
-		return (0);
 	while (str[i])
+	{
+		ft_putchar(str[i]);
 		i++;
-	return (i);
+	}
 }

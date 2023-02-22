@@ -7,20 +7,17 @@ NAME = libft.a
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 LIBC = ar rc
-LIBR = ranlib
 
 .c.o:
 	cc ${CFLAGS} -c $< -o ${<:.c=.o} -I ${INC}
 
 ${NAME}: ${OBJ}
 	${LIBC} ${NAME} ${OBJ}
-	${LIBR} ${NAME}
 
 all: ${NAME}
 
 bonus: ${OBJ_BONUS}
 	${LIBC} ${NAME} ${OBJ_BONUS}
-	${LIBR} ${NAME}
 
 clean:
 	${RM} ${OBJ}

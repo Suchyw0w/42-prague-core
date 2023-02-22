@@ -6,7 +6,7 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 12:58:20 by osuchane          #+#    #+#             */
-/*   Updated: 2023/02/01 13:43:59 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/02/15 10:54:54 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <unistd.h>
+# include <stdio.h>
+# include <stdarg.h>
+# include <stddef.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1024
+# endif
 
 typedef struct s_list
 {
@@ -70,5 +77,25 @@ void			ft_lstclear(t_list **lst, void (*del)(void*));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));
+
+//printf
+int				ft_printf(const char *format, ...);
+int				ft_check_param(va_list *args, char c, int count);
+int				ft_case_c(va_list *args);
+int				ft_case_s(va_list *args);
+int				ft_case_percent(void);
+
+int				ft_case_num(va_list *args);
+int				ft_case_u(va_list *args);
+int				ft_case_up_x(va_list *args);
+int				ft_case_x(va_list *args);
+int				ft_case_p(va_list *args);
+char			*ft_unsigned_itoa(unsigned int n);
+int				ft_printhex(unsigned int n, const char format);
+
+//getNextLine
+char			*get_next_line(int fd);
+char			*ft_get_single_line(char *str);
+char			*ft_custom_strjoin(char *s1, char *s2);
 
 #endif
