@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   stack_push.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 09:40:59 by osuchane          #+#    #+#             */
-/*   Updated: 2023/02/19 10:08:56 by osuchane         ###   ########.fr       */
+/*   Created: 2023/02/06 15:09:10 by osuchane          #+#    #+#             */
+/*   Updated: 2023/02/19 10:35:38 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./inc/push_swap.h"
+#include "./../inc/push_swap.h"
 
-int	main(int argc, char **argv)
+void	pa(t_stack **a, t_stack **b)
 {
-	t_stack *a;
-	t_stack *b;
+	t_stack	*tmp_a;
+	t_stack	*tmp_b;
 
-	if (argc < 2)
-		return (0);
-	a = init_stack_a(argc, argv);
-	b = NULL;
-	sort_small_sizes(&a, &b, argc);
-	sort_big_sizes(&a, &b);
-	free_stack(&a);
-	return (0);
+	tmp_a = *a;
+	tmp_b = *b;
+	*b = tmp_b->next;
+	*a = tmp_b;
+	tmp_b->next = tmp_a;
+	ft_printf("pa\n");
+}
+
+void	pb(t_stack **a, t_stack **b)
+{
+	t_stack	*tmp_a;
+	t_stack	*tmp_b;
+
+	tmp_a = *a;
+	tmp_b = *b;
+	*a = tmp_a->next;
+	*b = tmp_a;
+	tmp_a->next = tmp_b;
+	ft_printf("pb\n");
 }

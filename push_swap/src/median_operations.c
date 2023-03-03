@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   median_operations.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 09:40:59 by osuchane          #+#    #+#             */
-/*   Updated: 2023/02/19 10:08:56 by osuchane         ###   ########.fr       */
+/*   Created: 2023/02/06 18:08:00 by osuchane          #+#    #+#             */
+/*   Updated: 2023/02/17 18:09:01 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./inc/push_swap.h"
+#include "./../inc/push_swap.h"
 
-int	main(int argc, char **argv)
+void	transfer_median(t_stack **a, t_stack **b, int median)
 {
-	t_stack *a;
-	t_stack *b;
+	int	size;
+	int	i;
 
-	if (argc < 2)
-		return (0);
-	a = init_stack_a(argc, argv);
-	b = NULL;
-	sort_small_sizes(&a, &b, argc);
-	sort_big_sizes(&a, &b);
-	free_stack(&a);
-	return (0);
+	size = get_stack_size(*a);
+	i = 1;
+	while (i <= size)
+	{
+		if ((*a)->value < median)
+			pb(a, b);
+		else
+			ra(a);
+		i++;
+	}
 }

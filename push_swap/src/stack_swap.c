@@ -1,60 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_free.c                                       :+:      :+:    :+:   */
+/*   stack_swap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 11:39:41 by osuchane          #+#    #+#             */
-/*   Updated: 2023/02/19 10:20:50 by osuchane         ###   ########.fr       */
+/*   Created: 2023/02/06 15:38:15 by osuchane          #+#    #+#             */
+/*   Updated: 2023/02/19 10:36:09 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../inc/push_swap.h"
 
-void	free_stack(t_stack **stack)
+void	swap(t_stack **stack)
 {
-	t_stack	*temp;
-	t_stack	*next;
+	t_stack	*tmp;
 
 	if (!stack)
 		return ;
-	temp = *stack;
-	while (temp)
-	{
-		next = temp->next;
-		free(temp);
-		temp = next;
-	}
-	*stack = NULL;
+	if (!(*stack)->next)
+		return ;
+	tmp = (*stack)->next;
+	if (!tmp)
+		return ;
+	(*stack)->next = tmp->next;
+	tmp->next = *stack;
+	*stack = tmp;
 }
 
-void	double_free(char **ptr, size_t size)
+void	sa(t_stack **a)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < size)
-	{
-		free(ptr[i]);
-		i++;
-	}
-	free(ptr);
+	swap(a);
+	ft_printf("sa\n");
 }
 
-void	free_multiple(int n, ...)
+void	sb(t_stack **b)
 {
-	va_list	args;
-	int		i;
-	void	*p;
+	swap(b);
+	ft_printf("sb\n");
+}
 
-	va_start(args, n);
-	i = 0;
-	while (i < n)
-	{
-		p = va_arg(args, void *);
-		free(p);
-		i++;
-	}
-	va_end(args);
+void	ss(t_stack **a, t_stack **b)
+{
+	swap(a);
+	swap(b);
+	ft_printf("ss\n");
 }

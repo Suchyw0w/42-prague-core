@@ -10,17 +10,12 @@ LIBFT = ./libft/libft.a
 
 SRCS := $(wildcard $(SRC_DIR)/*.c)
 INCS := $(wildcard $(IDIR)/*.h)
-_OBJS = $(SRCS:.c=.o)
-OBJS = $(subst $(SDIR),$(ODIR),$(_OBJS))
+OBJS = $(SRCS:.c=.o)
 
 all: ${NAME}
 
 ${LIBFT}:
 	make -C ./libft
-
-${OBJ_DIR}/%.o: ${SRC_DIR}/%.c ${INCS}
-	mkdir -p obj
-	cc ${CFLAGS} -c $< -o $@
 
 ${NAME}: ${OBJS} ${LIBFT}
 	cc ${CFLAGS} $^ ${MAIN} -o $@

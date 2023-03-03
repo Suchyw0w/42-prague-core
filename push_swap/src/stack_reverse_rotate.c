@@ -1,60 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_free.c                                       :+:      :+:    :+:   */
+/*   stack_reverse_rotate.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 11:39:41 by osuchane          #+#    #+#             */
-/*   Updated: 2023/02/19 10:20:50 by osuchane         ###   ########.fr       */
+/*   Created: 2023/02/06 15:16:50 by osuchane          #+#    #+#             */
+/*   Updated: 2023/02/19 10:36:47 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../inc/push_swap.h"
 
-void	free_stack(t_stack **stack)
+void	reverse_rotate(t_stack **stack)
 {
-	t_stack	*temp;
-	t_stack	*next;
+	t_stack	*i;
+	t_stack	*prev;
 
 	if (!stack)
 		return ;
-	temp = *stack;
-	while (temp)
+	if (!(*stack)->next)
+		return ;
+	i = *stack;
+	while (i->next != NULL)
 	{
-		next = temp->next;
-		free(temp);
-		temp = next;
+		prev = i;
+		i = i->next;
 	}
-	*stack = NULL;
+	prev->next = NULL;
+	i->next = *stack;
+	*stack = i;
 }
 
-void	double_free(char **ptr, size_t size)
+void	rra(t_stack **a)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < size)
-	{
-		free(ptr[i]);
-		i++;
-	}
-	free(ptr);
+	reverse_rotate(a);
+	ft_printf("rra\n");
 }
 
-void	free_multiple(int n, ...)
+void	rrb(t_stack **b)
 {
-	va_list	args;
-	int		i;
-	void	*p;
+	reverse_rotate(b);
+	ft_printf("rrb\n");
+}
 
-	va_start(args, n);
-	i = 0;
-	while (i < n)
-	{
-		p = va_arg(args, void *);
-		free(p);
-		i++;
-	}
-	va_end(args);
+void	rrr(t_stack **a, t_stack **b)
+{
+	reverse_rotate(a);
+	reverse_rotate(b);
+	ft_printf("rrr\n");
 }

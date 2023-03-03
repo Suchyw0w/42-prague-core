@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   sort_algorithms.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 09:40:59 by osuchane          #+#    #+#             */
-/*   Updated: 2023/02/19 10:08:56 by osuchane         ###   ########.fr       */
+/*   Created: 2023/02/07 17:47:24 by osuchane          #+#    #+#             */
+/*   Updated: 2023/02/19 10:19:04 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./inc/push_swap.h"
+#include "./../inc/push_swap.h"
 
-int	main(int argc, char **argv)
+void	bubble_sort(int *arr, int n)
 {
-	t_stack *a;
-	t_stack *b;
+	int	temp;
+	int	i;
+	int	j;
 
-	if (argc < 2)
-		return (0);
-	a = init_stack_a(argc, argv);
-	b = NULL;
-	sort_small_sizes(&a, &b, argc);
-	sort_big_sizes(&a, &b);
-	free_stack(&a);
-	return (0);
+	i = 0;
+	while (i < n - 1)
+	{
+		j = 0;
+		while (j < n - i - 1)
+		{
+			if (arr[j] > arr[j + 1])
+			{
+				temp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+			}
+			j++;
+		}
+		i++;
+	}
 }

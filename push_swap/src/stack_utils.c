@@ -6,15 +6,34 @@
 /*   By: osuchane <osuchane@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 11:42:42 by osuchane          #+#    #+#             */
-/*   Updated: 2023/02/16 09:03:27 by osuchane         ###   ########.fr       */
+/*   Updated: 2023/02/19 10:22:12 by osuchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../inc/push_swap.h"
 
+int	get_stack_val_index(t_stack *stack, int val)
+{
+	int		i;
+	t_stack	*tmp;
+
+	if (!stack)
+		return (-1);
+	i = 0;
+	tmp = stack;
+	while (tmp != NULL)
+	{
+		if (tmp->value == val)
+			break ;
+		tmp = tmp->next;
+		i++;
+	}
+	return (i);
+}
+
 void	parse(t_stack **a, int argc, char **argv)
 {
-	int			i;
+	int		i;
 	long	number;
 
 	i = argc - 1;
@@ -31,8 +50,8 @@ void	parse(t_stack **a, int argc, char **argv)
 void	reverse_parse(t_stack **a, char *argv)
 {
 	char	**splitted_argv;
-	int					i;
-	int				number;
+	int		i;
+	int		number;
 
 	splitted_argv = ft_split(argv, ' ');
 	i = 0;
