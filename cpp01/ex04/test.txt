@@ -1,0 +1,3 @@
+random file which is very nice
+its suppost to replace every string given in s1 by s2
+its 3am wednesday but we going guys
