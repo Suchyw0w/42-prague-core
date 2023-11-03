@@ -5,7 +5,6 @@ NAME = push_swap
 MAIN = push_swap.c
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
-LIBC = ar rc
 LIBFT = ./libft/libft.a
 
 SRCS := $(wildcard $(SRC_DIR)/*.c)
